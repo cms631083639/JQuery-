@@ -307,7 +307,95 @@
         }
     });
     // dom operation module
+    myJQ.fn.extend({
+        appendTo: function(target) {
+            var self = this,
+                // tlen,
+                ret = [];
+            target = myJQ(target);
+            // tlen = target.length;
 
+            target.each(function(elem, i) {
+                self.each(function() {
+                    //  var node = i === tlen - 1 ? this : this.cloneNode(true);
+                    var node = i === 0 ? this : this.cloneNode(true);
+                    elem.appendChild(node);
+                    ret.push(node);
+                    //elem.appendChild(this);
+                });
+            });
+            return myJQ(ret);
+        },
+        append: function(source) {
+            myJQ(source).appendTo(this);
+            return this;
+        },
+        prependTo: function(target) {
+            var self, firstNode, node, ret = [];
+            // 将target转换成myJQ对象
+            // 统一处理；可以使用each方法遍历自己
+            target = I(target);
+            self = this; // 缓存this，即prependTo调用者
+            // 遍历target上每一个dom元素
+            target.each(function(elem, i) {
+                // 保存当前dom元素的第一个子节点
+                firstNode = this.firstChild;
+                // 遍历被添加的myJQ对象
+                self.each(function() {
+                    // 如果此时遍历的是target上的第一个dom元素就不需要克隆节点
+                    // 否则，就需要深克隆
+                    node = i === 0 ? this : this.cloneNode(true);
+                    // 给elem添加子节点，并且要在firstNode节点之前
+                    elem.insertBefore(node, firstNode);
+                    // elem.insertBefore(node, elem.firstChild);
+                    // 将被添加的节点存放在ret
+                    ret.push(node);
+                });
+            });
+            // 将ret转换为myJQ对象，并返回
+            // 实现链式编程
+            return myJQ(ret);
+        },
+        prepend: function(source) {
+            myJQ(source).prependTo(this);
+            return this;
+        },
+        remove: function() {
+            return this.each(function() {
+                this.parentNode.removeChild(this);
+            });
+        },
+        empty: function() {
+            return this.each(function() {
+                this.innerHTML = '';
+            });
+        },
+        next: function() {
+            var ret = [],
+                node;
+            this.each(function() {
+                for (node = this.nextSibling; node; node = node.nextSibling) {
+                    if (node.nodeType === 1) {
+                        ret.push(node);
+                        break;
+                    }
+                }
+            });
+            return ret;
+        },
+        nextAll: function() {
+            var ret = [],
+                node;
+            this.each(function() {
+                for (node = this.nextSibling; node; node = node.nextSibling) {
+                    if (node.nodeType === 1) {
+                        ret.push(node);
+                    }
+                }
+            });
+            return ret;
+        }
+    });
     // selector module
     var select = (function () {
         var rnative = /^[^{]+\{\s*\[native \w/,
