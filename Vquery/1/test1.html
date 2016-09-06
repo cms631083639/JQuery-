@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            /*display: none;*/
+        }
+    </style>
+    <script src="../VQuery.js"></script>
+    <script>
+        //        onload事件
+        //        new VQuery(function () {
+        //            alert ("a");
+        //        })
+        //        new VQuery(function () {
+        //            alert ("b");
+        //        })
+
+
+        //        点击事件
+        //        $(function () {
+        //            $("#btn").click(function () {
+        //                alert ("ID事件");
+        //            })
+        //            $(".btn").click(function () {
+        //                alert ("类事件");
+        //            })
+        //            $("input").click(function () {
+        //                alert("标签事件")
+        //            });
+        //        })
+
+
+        //        show(),hide()事件
+        //        $(function () {
+        //            $ ("#btn").click(function () {
+        //                $("#btn").hide ();
+        //            })
+        //        })
+
+
+        //        hover事件
+        //                $ (function () {
+        //                    $ (".btn").hover (function () {
+        //                        document.title = "over了";
+        //                    }, function () {
+        //                        document.title = "out了";
+        //                    });
+        //                })
+
+
+        //                        css事件
+        //        $ (function () {
+        //            $ ("#div1").click (function () {
+        //                $ (this).css ("width");
+        //            });
+        //        })
+
+
+        //        toggle事件
+        //        $ (function () {
+        //            $ ("input").toggle (function () {
+        //                $ ("#div1").hide ();
+        //            }, function () {
+        //                $ ("#div1").show ();
+        //            })
+        //        })
+
+
+        //        attr事件
+        //        $ (function () {
+        //            $ ("#getAttr").click (function () {
+        //                alert ($ ("#txtFrame").attr ("value"));
+        //            })
+        //            $ ("#setAttr").click (function () {
+        //                $ ("#txtFrame").attr ("value", "adss");
+        //            })
+        //        })
+
+
+        //        eq事件
+        //        $(function () {
+        //            $ ("input").eq (0).css("backgroundColor","red");
+        //        })
+
+
+        //        find事件
+        //        $(function () {
+        //            $ ("ul").find (".box").css("backgroundColor","red");
+        //        })
+
+
+        //        index事件
+        //        $ (function () {
+        //            alert ($ ("ul").find (".box").index ());
+        //        })
+
+
+        //        封装自己的VQuery4
+        //        css和json配合
+        //        $ (function () {
+        //            $ ("#jsoncss").click (function () {
+        //                $ ("#json").css ({"width": "200px", "height": "200px", "backgroundColor": "green"})
+        //            })
+        //        })
+
+
+        //        阻止默认事件和冒泡
+        //        $ (function () {
+        //            $ (document).bind ("contextmenu", function () {
+        //                return false;
+        //            })
+        //        })
+        //        $ (function () {
+        //            $ (".cancel").click (function () {
+        //                alert ("a");
+        //                return false;
+        //            })
+        //        })
+
+    </script>
+</head>
+<body>
+<input id="btn" type="button" value="这个有id"/>
+<input type="button" value="bbb"/>
+<input class="btn" type="button" value="这个有类"/>
+<input class="btn" type="button" value="这个有类"/>
+<input type="button" id="changeDsp" value="显示隐藏"/>
+
+<div id="div1"></div>
+<input type="text" id="txtFrame" value="abc"/>
+<input type="button" id="getAttr" value="读取文本"/>
+<input type="button" id="setAttr" value="设置文本"/>
+<ul id="ull">
+    <li></li>
+    <li></li>
+    <li class="third"></li>
+</ul>
+<ul>
+    <li class="box"></li>
+    <li class="box"></li>
+    <li class="third"></li>
+</ul>
+<ol>
+    <li></li>
+    <li></li>
+    <li></li>
+</ol>
+<input type="button" id="jsoncss" value="json配合css"/>
+
+<div id="json" class="cancel" style="width: 300px;height: 300px;background-color: green">
+    <div class="cancel" style="width: 200px;height: 200px;background-color: blue;">
+        <div class="cancel"></div>
+    </div>
+</div>
+
+</body>
+</html>
